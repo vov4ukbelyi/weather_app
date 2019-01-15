@@ -40,9 +40,7 @@ INSTALLED_APPS = [
     'weather',
     'dal',
     'dal_select2',
-    'django_filters',
     'django_tables2',
-    'bootstrap3',
 ]
 
 MIDDLEWARE = [
