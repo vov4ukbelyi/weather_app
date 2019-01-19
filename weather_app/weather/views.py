@@ -2,8 +2,6 @@ import requests
 from django.shortcuts import render
 from .models import City
 from .forms import CityForm, SearchForm
-from django.views import generic
-from django.urls import reverse_lazy
 from django_tables2 import RequestConfig
 from .tables import CityTable
 
@@ -30,16 +28,6 @@ def index(request):
 
     context = {'form': form, 'city': city}
     return render(request, 'weather/search.html', context)
-
-
-class UpdateView(generic.UpdateView):
-    model = City
-    form_class = CityForm
-    template_name = 'weather/search.html'
-    success_url = reverse_lazy('weather/search.html')
-
-    def get_object(self):
-        return City.objects.first()
 
 
 def stored_data(request):

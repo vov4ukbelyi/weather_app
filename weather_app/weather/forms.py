@@ -1,7 +1,6 @@
 from django.forms import TextInput
 from .models import City
 from django.forms.widgets import SelectDateWidget
-from dal import autocomplete
 from django import forms
 
 
@@ -13,8 +12,6 @@ class CityForm(forms.ModelForm):
         fields = ['name']
         widgets = {
            'name': TextInput(attrs={'class': 'input', 'placeholder': 'City Name', }),
-
-            #'name' : autocomplete.(url='weather:name-autocomplete')
         }
 
 
