@@ -11,20 +11,21 @@
 <body>
 <form action="{% url 'weather:stored_data' %}">
                           <input type="submit" value="Base" />
-                    </form>
+        </form>
     <section class="section">
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
-                    <form method="POST">
+                    <form method="POST" novalidate>
                         {% csrf_token %}
-                        <div class="field has-addons">
-                             <div class="control is-expanded">
-
-                                {{ form_city_filter.name }}
+                        <div class="">
+                             <div class="">
+                                 {{ form_city_filter.name }}
+                                 {{ form_city_filter.date_from}}
+                                 {{ form_city_filter.date_to }}
                             </div>
-                            <div class="control">
-                                <button type="submit" class="button is-info">
+                            <div class="">
+                                <button type="submit">
                                     Search
                                 </button>
                             </div>
