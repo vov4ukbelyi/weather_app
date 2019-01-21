@@ -3,10 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#txtSearch").autocomplete({
+                source: "/ajax_calls/search/",
+                minLength: 2,
+                open: function(){
+                    setTimeout(function () {
+                        $('.ui-autocomplete').css('z-index', 99);
+                    }, 0);
+                }
+              });
+        });
+</script>
+
 </head>
 
 <body>
@@ -23,18 +39,16 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-offset-4 is-4">
-                    <form method="POST">
+                    <form id=”search” method="POST" action="{% url 'weather:index' %}">
                         {% csrf_token %}
                         <div class="field has-addons">
                              <div class="control is-expanded">
 
-                                {{ form.name }}
+                                   {{form.name}}
 
-                            </div>
+                             </div>
                             <div class="control">
-                                <button type="submit" class="button is-info">
-                                    Search
-                                </button>
+                                 <button type="submit" class="button is-info">Search</button>
                             </div>
                         </div>
                     </form>
